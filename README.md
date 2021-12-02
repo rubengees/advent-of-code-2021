@@ -1,6 +1,6 @@
 # Advent of Code 2021
 
-These are my solutions for the advent of code in 2021.
+These are my solutions for the Advent of Code 2021.
 
 The language of choice is Typescript and no external libraries are used expect in the infrastructure to run solutions
 and tests.
