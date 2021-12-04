@@ -10,7 +10,7 @@ describe("day 2.1", () => {
   })
 
   test("input", () => {
-    const input = readInput("day2/input.txt")
+    const input = readInput("day2.1/input.txt")
     const result = day2_1(input)
 
     expect(result).toEqual(1971095320)

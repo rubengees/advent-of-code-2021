@@ -12,7 +12,7 @@ function countChars(values: string[]): CharCount {
   return Object.fromEntries(Array.from(map.entries()))
 }
 
-function findRating(input: string[], extractor: (count: CharCount) => string, position: number = 0): string {
+function findRating(input: string[], extractor: (count: CharCount) => string, position = 0): string {
   const count = countChars(input.map((it) => it.charAt(position)))
   const charToFilterBy = extractor(count)
 
