@@ -1,4 +1,4 @@
-export default function day1(input: string[]): number {
+export default function day1_part1(input: string[]): number {
   let previous = Number.MAX_VALUE
   let count = 0
 

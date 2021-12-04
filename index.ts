@@ -1,22 +1,35 @@
-import { Command } from "commander"
 import { PathLike } from "fs"
+import { Argument, Command, InvalidArgumentError } from "commander"
 import { readInput } from "./utils"
 
 type Program = (input: string[]) => number
 
+function parseDay(day: string): string {
+  const parsed = parseInt(day)
+
+  if (!Number.isInteger(parsed)) {
+    throw new InvalidArgumentError("Must be a number")
+  } else if (parsed < 1 || parsed > 25) {
+    throw new InvalidArgumentError("Must be a number between 1 and 25")
+  }
+
+  return day
+}
+
 new Command()
   .version("1.0.0", "-v, --version")
-  .name("Advent of Code 2021")
-  .argument("<day>", "the day to run. Part 1 is assumed if .2 is not appended")
-  .argument("[file]", "a file path with the input")
-  .action(async (day: string, file?: PathLike) => {
+  .name("advent-of-code-2021")
+  .addArgument(new Argument("<day>", "the day to run (should be between 1 and 25)").argParser(parseDay))
+  .addArgument(new Argument("<part>", "the part to run").choices(["1", "2"]))
+  .addArgument(new Argument("[file]", "a file path with the input"))
+  .action(async (day: string, part: string, file?: PathLike) => {
     let dayProgram: Program
     let input: string[]
 
     try {
-      dayProgram = (await import("./day" + day)).default as Program
+      dayProgram = (await import(`./day${day}/part${part}`)).default as Program
     } catch (e) {
-      console.error(`Did not find program for day ${day}`)
+      console.error(`Did not find program for day ${day} part ${part}`)
       return
     }
 

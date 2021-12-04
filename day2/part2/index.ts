@@ -1,19 +1,22 @@
-export default function day2(input: string[]): number {
+export default function day2_part2(input: string[]): number {
   let position = 0
   let depth = 0
+  let aim = 0
 
   for (const part of input) {
     const [name, amount] = part.split(" ")
+    const parsedAmount = parseInt(amount)
 
     switch (name) {
       case "forward":
-        position += parseInt(amount)
+        position += parsedAmount
+        depth += aim * parsedAmount
         break
       case "down":
-        depth += parseInt(amount)
+        aim += parsedAmount
         break
       case "up":
-        depth -= parseInt(amount)
+        aim -= parsedAmount
         break
     }
   }

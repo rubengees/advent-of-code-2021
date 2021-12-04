@@ -18,7 +18,7 @@ function windowSum(array: string[], size: number): number[] {
   return result
 }
 
-export default function day1_2(input: string[]): number {
+export default function day1_part2(input: string[]): number {
   let previous = Number.MAX_VALUE
   let count = 0
 

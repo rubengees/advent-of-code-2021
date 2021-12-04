@@ -1,7 +1,7 @@
-import { readInput } from "../utils"
-import day3 from "./index"
+import { readInput } from "../../utils"
+import day3_part1 from "./index"
 
-describe("day 3", () => {
+describe("day 3 part 1", () => {
   test("example", () => {
     const example = [
       "00100",
@@ -18,14 +18,14 @@ describe("day 3", () => {
       "01010",
     ]
 
-    const result = day3(example)
+    const result = day3_part1(example)
 
     expect(result).toEqual(198)
   })
 
   test("input", () => {
     const input = readInput("day3/input.txt")
-    const result = day3(input)
+    const result = day3_part1(input)
 
     expect(result).toEqual(738234)
   })

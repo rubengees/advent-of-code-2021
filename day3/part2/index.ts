@@ -25,7 +25,7 @@ function findRating(input: string[], extractor: (count: CharCount) => string, po
   return findRating(filteredInput, extractor, position + 1)
 }
 
-export default function day3(input: string[]): number {
+export default function day3_part2(input: string[]): number {
   const oxygen = findRating(input, (count) => (count["0"] > count["1"] ? "0" : "1"))
   const co2 = findRating(input, (count) => (count["1"] < count["0"] ? "1" : "0"))
 

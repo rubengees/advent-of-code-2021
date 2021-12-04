@@ -16,7 +16,7 @@ function findMostCommon(values: string[]): string {
   return value
 }
 
-export default function day3(input: string[]): number {
+export default function day3_part1(input: string[]): number {
   const matrix: string[][] = input.map((it) => it.split(""))
 
   // Simple, but not performant transpose.
