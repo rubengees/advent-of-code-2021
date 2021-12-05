@@ -22,7 +22,7 @@ yarn test day1/
 There is also a simple cli to run specific days. To run part 2 of day 1:
 
 ```bash
-yarn start 1.2 input.txt
+yarn start 1 2 input.txt
 ```
 
 > An input.txt file needs to exist with the input.
@@ -30,7 +30,7 @@ yarn start 1.2 input.txt
 Alternatively:
 
 ```bash
-cat input.txt | yarn start 1.2
+cat input.txt | yarn start 1 2
 ```
 
 > Input can also come from stdin.
