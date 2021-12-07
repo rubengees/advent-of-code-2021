@@ -3,6 +3,7 @@ import { Argument, Command, InvalidArgumentError } from "commander"
 import { readInput } from "./utils"
 
 type Program = (input: string[]) => number
+type ProgramImport = { default: Program }
 
 function parseDay(day: string): string {
   const parsed = parseInt(day)
@@ -27,7 +28,9 @@ new Command()
     let input: string[]
 
     try {
-      dayProgram = (await import(`./day${day}/part${part}`)).default as Program
+      const programImport = (await import(`./day${day}/part${part}`)) as ProgramImport
+
+      dayProgram = programImport.default
     } catch (e) {
       console.error(`Did not find program for day ${day} part ${part}`)
       return
@@ -36,7 +39,7 @@ new Command()
     try {
       input = readInput(file || process.stdin.fd)
     } catch {
-      console.error(`Could not read input from ${file || "stdin"}`)
+      console.error(`Could not read input from ${file?.toString() || "stdin"}`)
       return
     }
 
