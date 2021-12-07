@@ -23,8 +23,8 @@ describe("day 3 part 1", () => {
     expect(result).toEqual(198)
   })
 
-  test("input", () => {
-    const input = readInput("day3/input.txt")
+  test("input", async () => {
+    const input = await readInput("day3/input.txt")
     const result = day3_part1(input)
 
     expect(result).toEqual(738234)

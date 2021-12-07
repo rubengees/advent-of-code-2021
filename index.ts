@@ -37,7 +37,7 @@ new Command()
     }
 
     try {
-      input = readInput(file || process.stdin.fd)
+      input = await readInput(file || process.stdin.fd)
     } catch {
       console.error(`Could not read input from ${file?.toString() || "stdin"}`)
       return
