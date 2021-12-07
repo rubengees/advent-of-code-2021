@@ -6,7 +6,10 @@ export default function day7_part1(input: string[]): number {
   let smallestFuelUsage = Number.MAX_VALUE
 
   for (let i = min; i <= max; i++) {
-    const fuelUsageForI = positions.reduce((previousValue, currentValue) => previousValue + Math.abs(currentValue - i), 0)
+    const fuelUsageForI = positions.reduce(
+      (previousValue, currentValue) => previousValue + Math.abs(currentValue - i),
+      0
+    )
 
     smallestFuelUsage = Math.min(smallestFuelUsage, fuelUsageForI)
   }
