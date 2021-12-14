@@ -1,6 +1,7 @@
-import { Argument, Command, InvalidArgumentError } from "commander"
+import { Argument, Command, InvalidArgumentError, Option } from "commander"
 import fs, { PathLike } from "fs-extra"
 import inquirer from "inquirer"
+import { performance } from "perf_hooks"
 import { readInput } from "./utils"
 
 type Program = (input: string[]) => number
@@ -23,7 +24,8 @@ const runCommand = new Command("run")
   .addArgument(new Argument("<day>", "the day to run (should be between 1 and 25)").argParser(parseDay))
   .addArgument(new Argument("<part>", "the part to run").choices(["1", "2"]))
   .addArgument(new Argument("[file]", "a file path with the input"))
-  .action(async (day: string, part: string, file?: PathLike) => {
+  .addOption(new Option("-t, --time", "if the run should be timed"))
+  .action(async (day: string, part: string, file: PathLike | undefined, options: { time?: boolean }) => {
     let dayProgram: Program
     let input: string[]
 
@@ -48,9 +50,15 @@ const runCommand = new Command("run")
       return
     }
 
+    const startTime = performance.now()
     const output = dayProgram(input)
+    const endTime = performance.now()
 
     console.log(output)
+
+    if (options.time) {
+      console.log(`Algorithm took ${(endTime - startTime).toPrecision(2)}ms.`)
+    }
   })
 
 const newCommand = new Command("new")
