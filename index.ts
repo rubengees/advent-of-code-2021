@@ -57,7 +57,7 @@ const runCommand = new Command("run")
     console.log(output)
 
     if (options.time) {
-      console.log(`Algorithm took ${(endTime - startTime).toPrecision(2)}ms.`)
+      console.log(`Algorithm took ${(endTime - startTime).toFixed(3)}ms.`)
     }
   })
 
